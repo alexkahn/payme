@@ -1,0 +1,25 @@
+extends layout
+
+block content
+  .container
+    h1= title
+    form.col-sm-12(accept-charset='UTF-8', action='/transactions', method='post')
+        fieldset.form-group.col-sm-10
+          label(for='cc-num')
+            span Card Number
+          input.form-control(type='text'
+            placeholder='•••• •••• •••• ••••'
+            autocompletetype='cc-number'
+            required='required'
+            name='cc-num')
+        fieldset.form-group.col-sm-6
+          label(for='cc-exp')
+            span Expires
+          input.form-control(type='tel', placeholder='MM / YY', autocompletetype='cc-exp', required='required')
+        fieldset.form-group.col-sm-4
+          label(for='cc-cvc')
+            span CVC
+          input.form-control(type='tel', placeholder='CVC', autocompletetype='cc-cvc', required='required')
+        .row
+          input.button.btn.btn-primary(name='commit', type='submit', value='Make Payment')
+          a.btn.btn-secondaryk(href='/') Cancel
