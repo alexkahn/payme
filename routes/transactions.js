@@ -7,13 +7,18 @@ router.get('/', function(req, res, next) {
   res.send('respond with a resource');
 });
 
-router.post('/', function(req, res, next) {
-  schema.validate(req.body, function(err, value) {
+function validate(req, res, next) {
+  schema.validate(req.body, function (err, value) {
     if (err) {
       return res.send(err);
+    } else {
+      return next();
     }
-    return res.send('respond with a resource');
-  })
+  });
+}
+
+router.post('/', validate, function(req, res, next) {
+  return Math.random() * 100 < 70 ? res.send({'message': 'Success!'}) : res.send({'message': 'failure'});
 });
 
 module.exports = router;
