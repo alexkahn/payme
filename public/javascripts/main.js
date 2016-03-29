@@ -20,7 +20,7 @@ function luhnChecksum(cardNumber) {
      credit card number after some basic input sanitizing. Returns the checksum
      mod 10.
      @param: cardNumber, String
-     */
+  */
   var digits = enumerate(cardNumber).reverse();
   digits = digits.map(function(el, i) {
     if ((i + 1) % 2 === 0) {
