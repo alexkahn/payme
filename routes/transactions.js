@@ -10,8 +10,10 @@ router.get('/', function(req, res, next) {
 function validate(req, res, next) {
   schema.validate(req.body, function (err, value) {
     if (err) {
+      console.log(err);
       return res.send(err);
     } else {
+      console.log(value);
       return next();
     }
   });
