@@ -24,8 +24,7 @@ function luhnChecksum(cardNumber) {
   var digits = enumerate(cardNumber).reverse();
   digits = digits.map(function(el, i) {
     if ((i + 1) % 2 === 0) {
-      var partial = 2 * el > 9 ? enumerate(2*el).reduce(sum) : 2*el;
-      return partial;
+      return 2 * el > 9 ? enumerate(2*el).reduce(sum) : 2*el;
     } else {
       return el;
     }
