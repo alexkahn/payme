@@ -3,7 +3,7 @@ extends layout
 block content
   .container
     h1= title
-    form.col-sm-12(accept-charset='UTF-8', action='/transactions', method='post')
+    form#formId.col-sm-12(accept-charset='UTF-8', action='/transactions', method='post')
         fieldset.form-group.col-sm-10
           label(for='cc-num')
             span Card Number

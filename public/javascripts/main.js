@@ -4,15 +4,29 @@
 // 1234567812345678
 // 1234567812345670
 
-document.onreadystatechange = function() {
-  if (document.readystate === "complete") {
-    var form = document.getElementById('formId');
-    form.on('submit', function(event) {
-      event.preventDefault();
-      console.log(event);
+document.addEventListener('DOMContentLoaded', function() {
+  var form = document.getElementById('formId');
+  form.addEventListener('submit', function submitHandler(event) {
+    event.preventDefault();
+    console.log(event);
+    var formEl = document.getElementById('formId');
+    var data = new FormData(formEl);
+    console.log(data);
+    var req = new XMLHttpRequest();
+    req.addEventListener('load', function () {
+      var res = JSON.parse(this.responseText);
+      if (res.statusCode >= 200 && res.statusCode < 400) {
+        // make a happy message/ alert
+        // create a DOCUMENT FRAGMENT
+        var frag = document.createDocumentFragment();
+        var document.createElement('div');
+      }
+      console.log(this.responseText);
     });
-  }
-};
+    req.open('POST', 'http://localhost:3000/transactions');
+    req.send(data);
+  });
+});
 
 function luhnChecksum(cardNumber) {
   /*
